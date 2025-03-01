@@ -13,7 +13,7 @@ if (signupForm) {
                 // Signed up
                 const user = userCredential.user;
                 alert('Signup successful!');
-                window.location.href = 'login.html';
+                window.location.href = 'Homepage.html';
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -35,7 +35,7 @@ if (loginForm) {
                 // Logged in
                 const user = userCredential.user;
                 alert('Login successful!');
-                window.location.href = 'index.html'; // Redirect to the main page
+                window.location.href = 'Homepage.html'; // Redirect to the main page
             })
             .catch((error) => {
                 const errorMessage = error.message;
