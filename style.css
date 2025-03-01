@@ -133,7 +133,17 @@ h3 {
     transform: translateX(5px);
 }
 
-#callPoliceButton, #callAmbulanceButton {
+#callAmbulanceButton {
+    background: #2ed573;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+#callPoliceButton {
     background: #2ed573;
     color: white;
     padding: 8px 15px;
@@ -144,7 +154,11 @@ h3 {
     margin-left: auto;
 }
 
-#callPoliceButton, #callAmbulanceButtom:hover {
+#callAmbulanceButtom:hover {
+    background: #28b562;
+    transform: scale(1.05);
+}
+#callPoliceButtom:hover {
     background: #28b562;
     transform: scale(1.05);
 }
