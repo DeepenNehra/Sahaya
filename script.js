@@ -111,15 +111,21 @@ function initMap(lat = 12.9716, lng = 77.5946) {
 
 // SOS Functionality
 let sosTimeout;
+const sosSound = new Audio('sos.mp3');
 sosButton.addEventListener('mousedown', () => {
     sosTimeout = setTimeout(() => {
         navigator.geolocation.getCurrentPosition(
             position => sendSOSAlert(position.coords.latitude, position.coords.longitude),
-            error => alert('Error getting location')
+            sosSound.play(),
+            () => {
+                sosSound.pause();
+                sosSound.currentTime = 0;
+                alert('Error getting location');
+            }
         );
     }, 3000);
 });
-
+            
 sosButton.addEventListener('mouseup', () => clearTimeout(sosTimeout));
 
 function sendSOSAlert(lat, lng) {

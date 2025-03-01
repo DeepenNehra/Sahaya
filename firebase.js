@@ -23,4 +23,6 @@ const storage = getStorage(app);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
+
+
 export { database, storage, auth, firestore, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, addDoc, collection };
