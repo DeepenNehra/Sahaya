@@ -1,0 +1,110 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(195, 101, 101, 0.9), rgba(216, 191, 216, 0.9)), url('backgrounds.png');
+    background-size: cover;
+    min-height: 100vh;
+    color: #e0dbea;
+    text-align: center;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Center & Increase "WELCOME TO SAHAYA" */
+.welcome-text h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 60px; /* Bigger text */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Signup & Login Buttons Below the Heading */
+.auth-buttons {
+    display: flex;
+    gap: 115px;
+}
+
+/* Style the buttons */
+.auth-buttons button {
+    padding: 12px 20px;
+    font-size: 22px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 60px;
+}
+
+#signupButton {
+    background-color: #d32f2f;
+    color: white;
+}
+
+#loginButton {
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Align Sections Side by Side */
+main {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between sections */
+    flex-wrap: wrap; /* Wrap on smaller screens */
+    padding: 40px 20px;
+}
+
+/* Style for Each Section */
+.section {
+    background: rgba(211, 8, 8, 0.1); /* Light transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 22%; /* Adjust width */
+    min-width: 250px;
+    text-align: center;
+}
+
+/* Section Headings */
+.section h2 {
+    font-size: 24px;
+    color: #110d0d;
+    border-bottom: 2px solid #ffcc00;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.section {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.content {
+    display: none; /* Initially hidden */
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+/* Responsive for Smaller Screens */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section {
+        width: 80%;
+    }
+}

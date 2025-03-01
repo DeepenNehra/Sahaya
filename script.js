@@ -485,3 +485,5 @@ function startTimer() {
 
 // Initialize
 window.initMap = initMap;
+
+window.selectRoute = selectRoute;
