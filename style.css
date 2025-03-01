@@ -133,7 +133,7 @@ h3 {
     transform: translateX(5px);
 }
 
-.quick-call {
+#cllPoliceButton, #callAmbulanceButton {
     background: #2ed573;
     color: white;
     padding: 8px 15px;
@@ -144,7 +144,7 @@ h3 {
     margin-left: auto;
 }
 
-.quick-call:hover {
+#callPoliceButton, #callAmbulanceButtom:hover {
     background: #28b562;
     transform: scale(1.05);
 }
