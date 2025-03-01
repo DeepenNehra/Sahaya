@@ -530,3 +530,17 @@ logoutButton.addEventListener('click', async () => {
         alert('Failed to log out.');
     }
 });
+const callPoliceButton = document.getElementById('callPoliceButton');
+if (callPoliceButton) {
+    callPoliceButton.addEventListener('click', () => {
+        window.location.href = 'tel:100'; // Replace with the actual police contact number
+    });
+}
+
+// Call Ambulance Functionality
+const callAmbulanceButton = document.getElementById('callAmbulanceButton');
+if (callAmbulanceButton) {
+    callAmbulanceButton.addEventListener('click', () => {
+        window.location.href = 'tel:108'; // Replace with the actual ambulance contact number
+    });
+}
