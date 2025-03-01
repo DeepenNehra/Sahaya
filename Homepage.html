@@ -3,191 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAHAYA - Women Safety Alert System</title>
-    <link rel="stylesheet" href="Homepage.css">
+    <title>Women Safety Alert System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js" type="module"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv0leB0g4StU2y-3aXhBpO0g0Bu-qhy34&libraries=places,directions&callback=initMap" async defer></script>
+    
+    
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <div class="welcome-text">
-            <h1><strong>WELCOME TO SAHAYA</strong></h1>
-        </div>
-        <br><br>
-        <div class="auth-buttons">
-            <a href="signup.html"><button id="signupButton">Signup</button></a>
-            <a href="login.html"><button id="loginButton">Login</button></a>
-        </div>
+        <h1>Sahaya</h1>
+        <h3>Your Digital Shield, Always Activated</h3>
+        <button id="logoutButton" class="logout-button">Logout</button>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <div class="section" onclick="toggleSection('articleContent')">
-            <h2>Articles</h2>
-            <div id="articleContent" class="content">
-                <p>Here are some useful articles about women's safety and self-defense techniques.</p>
-                1. Women Security Index: Indian Women Financially More Secure but Feel Less Safe<p></p>
+    <div class="main-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="emergency-section">
+                <button id="sosButton">SOS</button>
+                <p id="locationText">Current Location: Not available</p>
+                <button id="shareLocationButton">Share Live Location</button>
+            </div>
 
-This article discusses the paradox where Indian women have achieved greater financial security but continue to feel unsafe in their environments. It delves into the factors contributing to this sentiment and offers insights into the current state of women's safety in India. <p></p>
+            <div class="contact-details">
+                <h4>Emergency Contacts</h4>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <span>Police: 100</span>
+                        <button class="quick-call">Call</button>
+                    </div>
+                    <div class="contact-card">
+                        <span>Ambulance: 108</span>
+                        <button class="quick-call">Call</button>
+                    </div>
+                </div>
+            </div>
 
-
-2. Self-Defense Techniques for Women
-
-Published by Hilbert College in January 2024, this piece provides an overview of effective self-defense strategies tailored for women. It emphasizes the importance of awareness, preparedness, and community support in enhancing personal security. <p></p>
-
-
-3. India Outraged at a Young Doctor's Rape and Murder: We Have Been Here Too Often
-
-This article from The Guardian, dated August 23, 2024, highlights a tragic incident that sparked widespread protests in India. It examines the societal and systemic issues contributing to such events and discusses the urgent need for reforms to ensure women's safety. 
-<p></p>
-
-4. Best Self-Defense Techniques for Women: Practical Tips and Strategies
-
-This article offers practical advice on self-defense techniques that are accessible and effective for women. It covers various strategies and mindsets to help individuals stay safe and confident in different situations. 
-<p></p>
-
-5. How to Stay Safe with Some of the Best Self-Defense Tools on the Market
-
-Published by the New York Post in December 2024, this article explores various self-defense tools and techniques designed to help individuals feel protected and empowered. It includes expert opinions and recommendations on tools like TASER devices, personal safety alarms, and pepper spray.
-<p></p>
+            <!-- Add Contact Form -->
+            <div class="add-contact">
+                <h4>Add Emergency Contact</h4>
+                <form id="add-contact-form">
+                    <input type="text" id="contact-name" placeholder="Contact Name" required>
+                    <input type="tel" id="contact-phone" placeholder="Contact Phone" required>
+                    <button type="submit" class="btn">Add Contact</button>
+                </form>
             </div>
         </div>
+
+        <!-- New Route Planning Section -->
+        <div class="route-planning">
+            <h2>Safe Route Planner</h2>
+            <div class="route-inputs">
+                <input type="text" id="startInput" placeholder="Start from current location" readonly>
+                <input type="text" id="endInput" placeholder="Enter destination">
+                <button id="getRouteButton">Get Safe Route</button>
+            </div>
+
+            <div class="travel-mode-selector">
+                <button class="travel-mode-btn active" data-mode="WALKING">
+                    <i class="fas fa-walking"></i> Walk
+                </button>
+                <button class="travel-mode-btn" data-mode="DRIVING">
+                    <i class="fas fa-car"></i> Drive
+                </button>
+                <button class="travel-mode-btn" data-mode="TRANSIT">
+                    <i class="fas fa-bus"></i> Transit
+                </button>
+            </div>
+            <div id="mapContainer"></div>
+            <div id="routeOptions"></div>
+
+            <div id="navigationPanel" style="display: none;">
+                <div id="navigationInstructions"></div>
+                <div class="navigation-controls">
+                    <button id="nextStepButton">Next Step</button>
+                    <button id="exitNavButton">Exit Navigation</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
-        <div class="section" onclick="toggleSection('selfDefenseContent')">
-            <h2>Self-Defense</h2>
-            <div id="selfDefenseContent" class="content">
-                <p>Learn essential self-defense moves to stay safe in any situation.</p>
-                <p>1. Scream & Create Attention
-                    📢 Why? Attackers fear getting caught.</p><p>
-                    🛡️ What to do?
-                    </p><p>
-                    
-                    *Shout "HELP!" or "BACK OFF!" loudly.
-                    </p><p>
-                    Run toward a crowd or well-lit area.
-                    </p><p>
-                    2. Stomp on the Foot
-👣 Why? Hurts the attacker and makes them lose balance.<p></p>
-🛡️ What to do?
-<p></p>
-Lift your foot and stomp hard on their toes or foot with your heel.<p></p>
-Works best if you're wearing hard shoes.<p></p>
-3. Groin Kick
-👊 Why? One of the most painful spots on a man.
-🛡️ What to do?<p></p>
-
-If the attacker is in front, kick them hard between the legs.<p></p>
-Use your knee if they are closer.<p></p>
-This will give you time to run away.<p></p>
-4. Eye Poke or Face Scratch
-👀 Why? Causes pain and temporary blindness.<p></p>
-🛡️ What to do?
-<p></p>
-Use your fingers, nails, or keys to poke or scratch their eyes.<p></p>
-A quick attack can make them let go.<p></p>
-5. Elbow Strike
-💪 Why? Strong and easy to use at close range.
-🛡️ What to do?<p></p>
-
-Swing your elbow hard into their face, ribs, or chest.<p></p>
-Works best if someone grabs you from behind or side.<p></p>
-6. Biting (Last Resort)
-😬 Why? Unexpected and painful.
-🛡️ What to do?<p></p>
-
-If grabbed, bite their hand, arm, or shoulder as hard as possible.<p></p>
-This will shock them and make them let go.<p></p>
-7. Breaking Free from a Wrist Grab
-✋ Why? Many attackers try to grab the wrist first.
-🛡️ What to do?<p></p>
-
-Twist your wrist towards their thumb and pull away quickly.
-If needed, use your other hand to hit their arm or face.<p>
-8. Use Everyday Objects
-🔑 Keys: Hold between fingers and punch.
-👜 Bag: Swing at the attacker’s face or stomach.
-📱 Phone: Use as a hard object to hit their nose or head.<p></p>
-
-
-            </div>
-        </div>
+    <div class="video-section">
+        <h3>Emergency Video Recording</h3>
+        <video id="videoPreview" autoplay muted></video>
+        <audio id="audioPreview" controls style="display: none;"></audio>
+        <p id="recordingStatus">Recording: Off</p>
+    </div>
     
-        <div class="section" onclick="toggleSection('emergencyContent')">
-            <h2>Emergency Contacts</h2>
-            <div id="emergencyContent" class="content">
-                <p>National Emergency Number: Dial 112 for immediate assistance across police, fire, and medical emergencies.</p>
-
-<p>
-                    Women Helpline (All India): 1091
-                    </p><p>
-                    Women Helpline (Domestic Abuse): 181
-                    </p>
-                    <p>
-                    
-                    National Commission for Women (NCW) Helpline: 7827170170
-                    </p><p>
-                    Police Control Room: 100
-                </p>
-                    Child Helpline: 1098</p>
-
-            </div>
-        </div>
-
-        <div class="section" onclick="toggleSection('about')">
-            <h2>About SAHAYA</h2>
-            <div id="about" class="content">
-                <p>🔹 What is SAHAYA?<p></p>
-                    SAHAYA is a women's safety and tracking system designed to provide security and emergency assistance in critical situations. It uses GPS tracking, emergency alerts, and self-defense resources to help women stay safe in public places.<p></p>
-                    
-                    🔹 Key Features of SAHAYA
-                    1️⃣ Emergency SOS Alert
-                    🚨 Quick Help When Needed<p></p>
-                    
-                    With just one tap, an SOS alert is sent to pre-registered contacts and emergency services.
-                    Sends location updates to ensure help arrives quickly.<p></p>
-                    2️⃣ Real-Time GPS Tracking
-                    📍 Location Safety at All Times<p></p>
-                    
-                    Tracks the user’s real-time location and shares it with trusted contacts.<p></p>
-                    Helps family members or police locate the user in case of danger.<p></p>
-                    3️⃣ Safe Route Suggestions
-                    🛣️ Avoid Unsafe Areas
-                    <p></p>
-                    Provides safe route recommendations based on crime reports and street lighting.<p></p>
-                    Helps users navigate safely at night or in unknown areas.<p></p>
-                    4️⃣ Self-Defense Training
-                    🥋 Learn to Protect Yourself
-                    <p></p>
-                    Provides videos and step-by-step guides for easy self-defense techniques.
-                    Helps women gain confidence to handle dangerous situations.<p></p>
-                    5️⃣ Emergency Contact Dialing
-                    📞 One-Touch Call for Help
-                    <p></p>
-                    Users can quickly call police (100), women's helpline (1091), or ambulance (108).
-                    Helps in situations where typing a message is difficult</p>
-            </div>
-        </div>
-
-        <div class="section" onclick="toggleSection('contact')">
-            <h2>Contact us</h2>
-            <div id="contact" class="content">
-                <p>Made by Team <b>Eratic</b></p>
-                <p>Collaboration with Google for developers</p>
-                <p>SAHAYA is a part of Google's Women Techmakers program</p>
-                <p>Email : eratic@gmail.com</p>
-                <p>ph no: 1234567890</p>
-            </div>
-        </div>
-    </main>
+    <button id="emergencyButton" class="sos-button">
+        <span class="material-icons">Warning</span>
+        <span>Trigger Emergency</span>
+    </button>
     
-    <script>
-        function toggleSection(sectionId) {
-            let content = document.getElementById(sectionId);
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block"; // Show content
-            } else {
-                content.style.display = "none"; // Hide content if clicked again
-            }
-        }
-    </script>
+    <button id="stopRecordingButton" class="sos-button" style="display: none;">
+        <span class="material-icons"></span>
+        <span>Stop Recording</span>
+    </button>
+
+    <a id="emergencyCallLink" href="#" style="display: none;">Call Police</a>
+
+    <script src="firebase.js" type="module"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
