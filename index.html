@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="Homepage.css">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
         <div class="welcome-text">
             <h1><strong>WELCOME TO SAHAYA</strong></h1>
@@ -19,7 +18,6 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <div class="section" onclick="toggleSection('articleContent')">
             <h2>Articles</h2>
@@ -183,9 +181,9 @@ If needed, use your other hand to hit their arm or face.<p>
         function toggleSection(sectionId) {
             let content = document.getElementById(sectionId);
             if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block"; // Show content
+                content.style.display = "block"; 
             } else {
-                content.style.display = "none"; // Hide content if clicked again
+                content.style.display = "none"; 
             }
         }
     </script>

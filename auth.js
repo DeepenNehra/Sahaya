@@ -10,7 +10,6 @@ if (signupForm) {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed up
                 const user = userCredential.user;
                 alert('Signup successful!');
                 window.location.href = 'Homepage.html';
@@ -32,10 +31,9 @@ if (loginForm) {
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Logged in
                 const user = userCredential.user;
                 alert('Login successful!');
-                window.location.href = 'Homepage.html'; // Redirect to the main page
+                window.location.href = 'Homepage.html';
             })
             .catch((error) => {
                 const errorMessage = error.message;

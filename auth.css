@@ -19,8 +19,6 @@ min-height: 100vh;
 color: #fff;
 padding: 20px;
 }
-
-/* Container - Glassmorphism Effect */
 .container {
     background: rgb(0 0 0 / 48%);
     padding: 2.5rem;
@@ -47,15 +45,11 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
-
-/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
-
-/* Input Fields */
 input {
     padding: 1rem;
     border: 2px solid transparent;
@@ -76,14 +70,11 @@ input:focus {
     border-color: #ff6b6b;
     box-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
 }
-
-/* Fancy Border Animation */
 input:hover {
     background: rgba(255, 255, 255, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Buttons */
 .btn {
     padding: 1rem;
     border: none;
@@ -97,19 +88,15 @@ input:hover {
     position: relative;
     overflow: hidden;
 }
-
-/* Button Hover Effect */
 .btn:hover {
     background: linear-gradient(135deg, #5a5aff, #ff5a5a);
     transform: scale(1.05);
 }
 
-/* Button Click Effect */
 .btn:active {
     transform: scale(0.95);
 }
 
-/* Floating Button Glow Effect */
 .btn::after {
     content: "";
     position: absolute;
@@ -125,8 +112,6 @@ input:hover {
 .btn:hover::after {
     opacity: 1;
 }
-
-/* Links */
 p {
     margin-top: 1.2rem;
     color: #fff;
@@ -143,8 +128,6 @@ a:hover {
     color: #fff;
     transform: scale(1.05);
 }
-
-/* Error Message */
 .error-message {
     position: fixed;
     bottom: 20px;
@@ -157,8 +140,6 @@ a:hover {
     display: none;
     animation: fadeIn 0.3s ease;
 }
-
-/* Loading Button */
 .loading {
     position: relative;
     pointer-events: none;
@@ -178,8 +159,6 @@ a:hover {
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
-
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -203,8 +182,6 @@ a:hover {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
-
-/* Responsive */
 @media (max-width: 480px) {
     .container {
         padding: 1.5rem;
