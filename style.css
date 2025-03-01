@@ -610,26 +610,3 @@ input[type="text"]:focus {
     background-color: #e0414f;
     transform: translateY(-2px);
 }
-#callPoliceButton {
-    background-color: #dc3545;
-}
-
-#callPoliceButton:hover {
-    background-color: #c82333;
-}
-
-#callPoliceButton:active {
-    background-color: #bd2130;
-}
-
-#callAmbulanceButton {
-    background-color: #28a745;
-}
-
-#callAmbulanceButton:hover {
-    background-color: #218838;
-}
-
-#callAmbulanceButton:active {
-    background-color: #1e7e34;
-}
