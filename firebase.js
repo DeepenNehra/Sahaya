@@ -3,6 +3,7 @@ import { getDatabase } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js';
 import { getStorage, ref as storageRef, uploadBytes } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 
 // Your Firebase configuration and initialization code here
 const firebaseConfig = {
@@ -20,5 +21,6 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
+const firestore = getFirestore(app);
 
-export { database, storage, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut };
+export { database, storage, auth, firestore, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, addDoc, collection };

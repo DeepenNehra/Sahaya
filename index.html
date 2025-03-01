@@ -14,6 +14,7 @@
     <header>
         <h1>Sahaya</h1>
         <h3>Your Digital Shield, Always Activated</h3>
+        <button id="logoutButton" class="logout-button">Logout</button>
     </header>
 
     <div class="main-container">
@@ -37,6 +38,16 @@
                         <button class="quick-call">Call</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- Add Contact Form -->
+            <div class="add-contact">
+                <h4>Add Emergency Contact</h4>
+                <form id="add-contact-form">
+                    <input type="text" id="contact-name" placeholder="Contact Name" required>
+                    <input type="tel" id="contact-phone" placeholder="Contact Phone" required>
+                    <button type="submit" class="btn">Add Contact</button>
+                </form>
             </div>
         </div>
 
@@ -73,40 +84,23 @@
         </div>
     </div>
     
-
     <div class="video-section">
-    
-    <h3>Emergency Video Recording</h3>
-    
-    <video id="videoPreview" autoplay muted></video>
-    
-    <audio id="audioPreview" controls style="display: none;"></audio>
-    
-    <p id="recordingStatus">Recording: Off</p>
-    
+        <h3>Emergency Video Recording</h3>
+        <video id="videoPreview" autoplay muted></video>
+        <audio id="audioPreview" controls style="display: none;"></audio>
+        <p id="recordingStatus">Recording: Off</p>
     </div>
     
-   
-    
     <button id="emergencyButton" class="sos-button">
-    
-    <span class="material-icons">Warning</span>
-    
-    <span>Trigger Emergency</span>
-    
+        <span class="material-icons">Warning</span>
+        <span>Trigger Emergency</span>
     </button>
-    
-   
     
     <button id="stopRecordingButton" class="sos-button" style="display: none;">
-    
-    <span class="material-icons">stop</span>
-    
-    <span>Stop Recording</span>
-    
+        <span class="material-icons"></span>
+        <span>Stop Recording</span>
     </button>
 
-    
     <a id="emergencyCallLink" href="#" style="display: none;">Call Police</a>
 
     <script src="firebase.js" type="module"></script>

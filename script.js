@@ -487,3 +487,40 @@ function startTimer() {
 window.initMap = initMap;
 
 window.selectRoute = selectRoute;
+import { firestore, addDoc, collection } from './firebase.js';
+
+const addContactForm = document.getElementById('add-contact-form');
+
+addContactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const contactName = document.getElementById('contact-name').value;
+    const contactPhone = document.getElementById('contact-phone').value;
+
+    try {
+        await addDoc(collection(firestore, 'contacts'), {
+            name: contactName,
+            phone: contactPhone,
+            timestamp: new Date().toISOString()
+        });
+        alert('Contact added successfully!');
+        addContactForm.reset();
+    } catch (error) {
+        console.error('Error adding contact:', error);
+        alert('Failed to add contact.');
+    }
+});
+import { auth, signOut } from './firebase.js';
+
+const logoutButton = document.getElementById('logoutButton');
+
+logoutButton.addEventListener('click', async () => {
+    try {
+        await signOut(auth);
+        alert('Logged out successfully!');
+        // Redirect to login page or perform other actions
+        window.location.href = 'login.html'; // Change this to your login page
+    } catch (error) {
+        console.error('Error logging out:', error);
+        alert('Failed to log out.');
+    }
+});

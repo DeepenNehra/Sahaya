@@ -548,3 +548,65 @@ input[type="text"]:focus {
   #stopRecordingButton:hover {
     background-color: #cc0000;
   }
+
+  /* Add Contact Form Styles */
+.add-contact {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.add-contact h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.add-contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-contact input[type="text"],
+.add-contact input[type="tel"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.add-contact button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4285f4;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-contact button:hover {
+    background-color: #357ae8;
+}
+/* Logout Button Styles */
+.logout-button {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logout-button:hover {
+    background-color: #e0414f;
+    transform: translateY(-2px);
+}
