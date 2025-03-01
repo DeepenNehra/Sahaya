@@ -1,6 +1,4 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-
-/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +16,6 @@ body {
     padding: 20px;
 }
 
-/* Main Layout */
 .main-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -26,8 +23,6 @@ body {
     max-width: 1400px;
     margin: 0 auto;
 }
-
-/* Header */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -45,8 +40,6 @@ h3 {
     font-weight: 300;
     letter-spacing: 0.5px;
 }
-
-/* Left Panel Styles */
 .left-panel {
     background: rgba(255, 255, 255, 0.1);
     padding: 30px;
@@ -54,8 +47,6 @@ h3 {
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
-
-/* Emergency Section */
 .emergency-section {
     text-align: center;
     margin: 30px 0;
@@ -108,7 +99,6 @@ h3 {
     transform: translateY(-2px);
 }
 
-/* Contact Section */
 .contact-details {
     margin-top: 30px;
 }
@@ -163,7 +153,6 @@ h3 {
     transform: scale(1.05);
 }
 
-/* Right Panel - Route Planning */
 .route-planning {
     background: rgba(255, 255, 255, 0.1);
     padding: 30px;
@@ -207,7 +196,6 @@ input[type="text"]:focus {
     transform: translateY(-2px);
 }
 
-/* Travel Mode Selector */
 .travel-mode-selector {
     display: flex;
     gap: 15px;
@@ -240,16 +228,12 @@ input[type="text"]:focus {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
-
-/* Map Container */
 #mapContainer {
     height: 500px;
     border-radius: 15px;
     margin: 20px 0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
-/* Route Options */
 #routeOptions {
     margin-top: 20px;
 }
@@ -292,7 +276,6 @@ input[type="text"]:focus {
     color: #ff8c00;
 }
 
-/* Navigation Panel */
 #navigationPanel {
     background: rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -336,7 +319,6 @@ input[type="text"]:focus {
     transform: translateY(-2px);
 }
 
-/* Loading Spinner */
 .loading-spinner {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #4285f4;
@@ -351,8 +333,6 @@ input[type="text"]:focus {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .main-container {
         grid-template-columns: 1fr;
@@ -402,7 +382,6 @@ input[type="text"]:focus {
     }
     
 }
-/* Route Options Container */
 #routeOptions {
     margin-top: 25px;
     background: rgba(255, 255, 255, 0.05);
@@ -493,7 +472,6 @@ input[type="text"]:focus {
 .route-info {
     display: contents;
 }
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .route-option {
         padding: 15px;
@@ -514,8 +492,6 @@ input[type="text"]:focus {
         justify-content: center;
     }
 }
-
-/* Video Recording Section */
 .video-section {
     margin-top: 20px;
     text-align: center;
@@ -526,10 +502,9 @@ input[type="text"]:focus {
     max-width: 400px;
     border-radius: 10px;
     border: 2px solid #ccc;
-    background-color: black; /* Optional: Add a background color */
+    background-color: black; 
   }                                                                                                                   
   
-  /* Trigger Emergency Button */
   #emergencyButton {
     background-color: #d32f2f;
     color: white;
@@ -546,7 +521,6 @@ input[type="text"]:focus {
     background-color: #b71c1c;
   }
   
-  /* Stop Recording Button */
   #stopRecordingButton {
     background-color: #ff4444;
     color: white;
@@ -562,8 +536,6 @@ input[type="text"]:focus {
   #stopRecordingButton:hover {
     background-color: #cc0000;
   }
-
-  /* Add Contact Form Styles */
 .add-contact {
     margin-top: 20px;
     padding: 20px;
@@ -605,7 +577,6 @@ input[type="text"]:focus {
 .add-contact button:hover {
     background-color: #357ae8;
 }
-/* Logout Button Styles */
 .logout-button {
     background-color: #ff4757;
     color: white;

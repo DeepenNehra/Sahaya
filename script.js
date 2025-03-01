@@ -3,21 +3,20 @@ const locationText = document.getElementById('locationText');
 const sosButton = document.getElementById('sosButton');
 const shareLocationButton = document.getElementById('shareLocationButton');
 
-// Map Elements
 let map, directionsService, directionsRenderer;
 let currentLocationMarker = null;
 let navigationPositionMarker = null;
 
-// Route Planning Elements
+
 const startInput = document.getElementById('startInput');
 const endInput = document.getElementById('endInput');
 const getRouteButton = document.getElementById('getRouteButton');
 
-// Travel Mode Elements
+
 const travelModeButtons = document.querySelectorAll('.travel-mode-btn');
 let currentTravelMode = 'WALKING';
 
-// Navigation Elements
+
 const navigationPanel = document.getElementById('navigationPanel');
 const navigationInstructions = document.getElementById('navigationInstructions');
 const nextStepButton = document.getElementById('nextStepButton');
@@ -26,7 +25,6 @@ let currentRoute = null;
 let currentStep = 0;
 let navigationWatchId = null;
 
-// Initialize Geolocation and Map
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
         position => initializeApp(position),
@@ -44,7 +42,6 @@ function initializeApp(position) {
     initMap(latitude, longitude);
     startInput.value = `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
 
-    // Create current location marker
     currentLocationMarker = new google.maps.Marker({
         position: { lat: latitude, lng: longitude },
         map: map,
@@ -75,7 +72,6 @@ function initMap(lat = 12.9716, lng = 77.5946) {
         mapTypeId: 'roadmap'
     });
 
-    // Default location marker
     if (lat === 12.9716 && lng === 77.5946) {
         currentLocationMarker = new google.maps.Marker({
             position: { lat, lng },
@@ -109,7 +105,6 @@ function initMap(lat = 12.9716, lng = 77.5946) {
     });
 }
 
-// SOS Functionality
 let sosTimeout;
 const sosSound = new Audio('sos.mp3');
 sosButton.addEventListener('mousedown', () => {
@@ -137,7 +132,6 @@ function sendSOSAlert(lat, lng) {
       .catch(() => alert('SOS failed'));
 }
 
-// Live Location Sharing
 shareLocationButton.addEventListener('click', () => {
     navigator.geolocation.getCurrentPosition(
         position => shareLiveLocation(position.coords.latitude, position.coords.longitude),
@@ -150,9 +144,7 @@ function shareLiveLocation(lat, lng) {
     alert(`Share this link: ${link}\nLocation will update every 60 seconds`);
 }
 
-// Route Calculation and Display
 getRouteButton.addEventListener('click', calculateRoute);
-
 function calculateRoute() {
     const request = {
         origin: startInput.value,
@@ -216,7 +208,6 @@ function calculateSafetyScore(route) {
     return Math.min(5, Math.max(2, Math.floor(score)));
 }
 
-// Navigation Functions
 function selectRoute(index) {
     currentRoute = directionsRenderer.getDirections().routes[index];
     startNavigation(currentRoute);
@@ -291,8 +282,6 @@ function checkRouteProgress(position) {
 
     if (distance < 20) goToNextStep();
 }
-
-// Location Tracking
 function startLocationTracking() {
     if(navigationWatchId) navigator.geolocation.clearWatch(navigationWatchId);
     
@@ -355,8 +344,6 @@ function stopLocationTracking() {
         navigationWatchId = null;
     }
 }
-
-// Helper Functions
 function addTrafficLayer() {
     new google.maps.TrafficLayer().setMap(map);
 }
@@ -375,7 +362,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Travel Mode Handling
 travelModeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         travelModeButtons.forEach(b => b.classList.remove('active'));
@@ -386,22 +372,18 @@ travelModeButtons.forEach(btn => {
 });
 
 
-// Emergency Call
 function makeEmergencyCall() {
-    const policeNumber = '100'; // Replace with the local police emergency number
+    const policeNumber = '100'; 
     emergencyCallLink.href = `tel:${policeNumber}`;
     emergencyCallLink.click();
     alert('Calling the nearest police station...');
 }
  
-// Auto Video Recording
 async function startRecording() {
     try {
-        // Request both video and audio permissions
         const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
         videoPreview.srcObject = stream;
 
-        // Initialize MediaRecorder with both video and audio tracks
         mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp9,opus' });
 
         mediaRecorder.ondataavailable = (event) => {
@@ -412,8 +394,8 @@ async function startRecording() {
 
         mediaRecorder.onstop = async () => {
             const blob = new Blob(recordedChunks, { type: 'video/webm' });
-            await uploadRecording(blob); // Upload the recording to the server
-            recordedChunks = []; // Clear recorded chunks for the next recording
+            await uploadRecording(blob); 
+            recordedChunks = []; 
         };
 
         mediaRecorder.start();
@@ -425,17 +407,15 @@ async function startRecording() {
     }
 }
 
-// Stop Recording
 function stopRecording() {
     if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
         recordingStatus.textContent = 'Recording: Off';
         alert('Recording stopped!');
-        audioPreview.style.display = 'none'; // Hide audio preview
+        audioPreview.style.display = 'none'; 
     }
 }
 
-// Upload Recording to Server
 async function uploadRecording(blob) {
     const formData = new FormData();
     formData.append('video', blob, 'emergency-recording.webm');
@@ -457,39 +437,34 @@ async function uploadRecording(blob) {
     }
 }
 
-// Trigger Emergency
 function triggerEmergency() {
     startRecording();
     makeEmergencyCall();
-    document.getElementById('emergencyButton').style.display = 'none'; // Hide Emergency Button
-    document.getElementById('stopRecordingButton').style.display = 'block'; // Show Stop Recording Button
+    document.getElementById('emergencyButton').style.display = 'none'; 
+    document.getElementById('stopRecordingButton').style.display = 'block'; 
 }
 
-// Stop Recording Button
 stopRecordingButton.addEventListener('click', () => {
     stopRecording();
-    document.getElementById('stopRecordingButton').style.display = 'none'; // Hide Stop Recording Button
-    document.getElementById('emergencyButton').style.display = 'block'; // Show Emergency Button
+    document.getElementById('stopRecordingButton').style.display = 'none'; 
+    document.getElementById('emergencyButton').style.display = 'block'; 
 });
 
-// Add event listener to the emergency button
 emergencyButton.addEventListener('click', triggerEmergency);
 
-let recordingStartTime; // To store the start time of recording
-let timerInterval; // To store the interval for updating the timer
+let recordingStartTime; 
+let timerInterval; 
 
 
 function startTimer() {
     timerInterval = setInterval(() => {
-        const elapsedTime = Math.floor((Date.now() - recordingStartTime) / 1000); // Calculate elapsed time in seconds
-        const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, '0'); // Format minutes
-        const seconds = (elapsedTime % 60).toString().padStart(2, '0'); // Format seconds
-        recordingStatus.textContent = `Recording: On (${minutes}:${seconds})`; // Update the timer display
-    }, 1000); // Update every second
+        const elapsedTime = Math.floor((Date.now() - recordingStartTime) / 1000); 
+        const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, '0'); 
+        const seconds = (elapsedTime % 60).toString().padStart(2, '0'); 
+        recordingStatus.textContent = `Recording: On (${minutes}:${seconds})`; 
+    }, 1000); 
 }
 
-
-// Initialize
 window.initMap = initMap;
 
 window.selectRoute = selectRoute;
@@ -523,8 +498,7 @@ logoutButton.addEventListener('click', async () => {
     try {
         await signOut(auth);
         alert('Logged out successfully!');
-        // Redirect to login page or perform other actions
-        window.location.href = 'login.html'; // Change this to your login page
+        window.location.href = 'login.html'; 
     } catch (error) {
         console.error('Error logging out:', error);
         alert('Failed to log out.');
@@ -533,14 +507,12 @@ logoutButton.addEventListener('click', async () => {
 const callPoliceButton = document.getElementById('callPoliceButton');
 if (callPoliceButton) {
     callPoliceButton.addEventListener('click', () => {
-        window.location.href = 'tel:100'; // Replace with the actual police contact number
+        window.location.href = 'tel:100'; 
     });
 }
-
-// Call Ambulance Functionality
 const callAmbulanceButton = document.getElementById('callAmbulanceButton');
 if (callAmbulanceButton) {
     callAmbulanceButton.addEventListener('click', () => {
-        window.location.href = 'tel:108'; // Replace with the actual ambulance contact number
+        window.location.href = 'tel:108'; 
     });
 }

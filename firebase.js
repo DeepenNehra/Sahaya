@@ -5,7 +5,6 @@ import { getStorage, ref as storageRef, uploadBytes } from 'https://www.gstatic.
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 
-// Your Firebase configuration and initialization code here
 const firebaseConfig = {
   apiKey: "AIzaSyBcPmTtJiyM2rwbQe7nM0IfiDgKiYtulrA",
   authDomain: "sahaya-5186f.firebaseapp.com",
