@@ -133,7 +133,7 @@ h3 {
     transform: translateX(5px);
 }
 
-#cllPoliceButton, #callAmbulanceButton {
+#callPoliceButton, #callAmbulanceButton {
     background: #2ed573;
     color: white;
     padding: 8px 15px;
