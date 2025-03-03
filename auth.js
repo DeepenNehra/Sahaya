@@ -1,6 +1,5 @@
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from './firebase.js';
 
-// Handle Signup
 const signupForm = document.getElementById('signup-form');
 if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
@@ -20,8 +19,6 @@ if (signupForm) {
             });
     });
 }
-
-// Handle Login
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
@@ -41,8 +38,6 @@ if (loginForm) {
             });
     });
 }
-
-// Handle Logout
 const logoutButton = document.getElementById('logoutButton');
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
